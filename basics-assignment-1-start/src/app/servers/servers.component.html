@@ -1,0 +1,9 @@
+<h3>Server Name</h3>
+<input 
+  type="text" 
+  class="form-control"  
+  [(ngModel)]="serverName">
+<p>{{ serverStatus }}</p>
+<button (click)="onClick()"class="btn btn-primary" [disabled]="serverStatus">This is a button</button>
+
+

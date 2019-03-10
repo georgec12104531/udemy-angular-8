@@ -5,27 +5,24 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './servers.component.html',
   styleUrls: ['./servers.component.css']
 })
+
 export class ServersComponent implements OnInit {
-  serverId = 10;
-  serverStatus = 'The server has not been created';
   bleep = 'bitches';
   serverName = '';
-  
-
+  serverCreated = false;
+  serverStatus = '';
   constructor() {
-    setTimeout(() => {
-      this.serverStatus = !this.serverStatus;
-      }
-      , 2000);
+  }
+  ngOnInit() {
   }
 
   onClick() {
+    this.serverCreated = true;
     this.serverStatus = 'the server ' + this.serverName + '  has been created!!! toodalooo mother fuckerssss!!!';
   }
-
-  onUpdateServerName(event) {
-    this.serverName = (<HTMLInputElement>event.target).value;
-  }
+  // onUpdateServerName(event) {
+  //   this.serverName = (<HTMLInputElement>event.target).value;
+  // }
 
 
 }

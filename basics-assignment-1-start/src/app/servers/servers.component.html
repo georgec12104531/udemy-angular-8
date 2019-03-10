@@ -3,7 +3,11 @@
   type="text" 
   class="form-control"  
   [(ngModel)]="serverName">
-<p *ngIf="serverStatus">{{ serverStatus }}</p>
-<button (click)="onClick()"class="btn btn-primary">This is a button</button>
+<p *ngIf="serverStatus; else noServer">{{ serverStatus }}</p>
+<ng-template #noServer>
+  <p>The server was not created</p>
+</ng-template>
+<button (click)="onClick()" class="btn btn-primary">This is a button</button>
+<button [disabled]="serverName === ''" (click)="onReset()" class="btn btn-primary">Reset Met</button>
 
 

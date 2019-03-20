@@ -3,8 +3,10 @@
   type="text" 
   class="form-control"  
   [(ngModel)]="serverName">
-<p [ngStyle]="{'background-color': getColor()}" *ngIf="serverStatus; else noServer">The server is {{ serverStatus }}</p>
-<p [ngStyle]="{ backgroundColor: getColor()}"  *ngIf="serverStatus; else noServer">The server is {{ serverStatus }}</p>
+<p [ngStyle]="{'background-color': getColor()}" 
+   [ngClass]="{online: serverStatus === 'online'}" 
+   *ngIf="serverStatus; else noServer">The server is {{ serverStatus }}</p>
+<p [ngStyle]="{ backgroundColor: getColor()}" *ngIf="serverStatus; else noServer">The server is {{ serverStatus }}</p>
 <ng-template #noServer>
   <p>The server was not created</p>
 </ng-template>

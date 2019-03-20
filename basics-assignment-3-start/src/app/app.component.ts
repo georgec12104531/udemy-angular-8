@@ -17,7 +17,7 @@ export class AppComponent {
   handleToggle() {
     this.displayStatus = !this.displayStatus;
     this.count += 1;
-    this.history.push(this.count);
+    this.history.push(new Date());
   }
 
   

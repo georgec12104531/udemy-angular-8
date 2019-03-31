@@ -12,7 +12,7 @@ import { Component,
   styleUrls: ['./server-element.component.css'],
   encapsulation: ViewEncapsulation.Emulated,
 })
-export class ServerElementComponent implements OnInit, onChanges {
+export class ServerElementComponent implements OnInit, OnChanges {
 
   @Input('svrElement') element: {type: string, name: string, content: string};
 
@@ -32,4 +32,6 @@ export class ServerElementComponent implements OnInit, onChanges {
     console.log('ngOnChanges');
     console.log(changes);
   }
+
+  
 }

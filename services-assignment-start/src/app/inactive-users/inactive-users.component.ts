@@ -8,6 +8,8 @@ import { UserService } from '../user.service';
 })
 export class InactiveUsersComponent implements OnInit {
 
+  users: string[];
+
   constructor(private userService: UserService) {}
 
   ngOnInit() {
@@ -15,6 +17,6 @@ export class InactiveUsersComponent implements OnInit {
   }
 
   onSetToActive(id: number) {
-    
+    this.userService.setToActive(id);
   }
 }

@@ -1,3 +1,5 @@
+import { CanDeactivateGuard } from './servers/edit-server/can-deactive-guard.service';
+import { CanDeactivate } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +33,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ServersService, AuthService, AuthGuard],
+  providers: [ServersService, AuthService, AuthGuard, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,5 @@
-import { ActivatedRouteSnapshot, CanDeactivate } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { CanDeactivate, RouterStateSnapshot, RouterState } from '@angular/router';
+import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs/Observable'; 
 
 export interface CanComponentDeactivate {
   canDeactivate: () => Observable<boolean> | Promise<boolean> | boolean;

@@ -3,20 +3,20 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UserService {
-  activeUsers = ['Max', 'Anna'];
-  inactiveUsers = ['Chris', 'Manu'];
+  featuredWords = ['hrblock', 'tax', 'tax return', 'turbo tax'];
+  additionalWords = ['bills', 'Manu'];
 
   constructor(private counterService: CounterService) {}
 
   setToInactive(id: number) {
-    this.inactiveUsers.push(this.activeUsers[id]);
-    this.activeUsers.splice(id, 1);
+    this.additionalWords.push(this.featuredWords[id]);
+    this.featuredWords.splice(id, 1);
     this.counterService.incrementActiveToInactive();
   }
 
   setToActive(id: number) {
-    this.activeUsers.push(this.inactiveUsers[id]);
-    this.inactiveUsers.splice(id, 1);
+    this.featuredWords.push(this.additionalWords[id]);
+    this.additionalWords.splice(id, 1);
     this.counterService.incrementInactiveToActiveCounter();
   }
 }

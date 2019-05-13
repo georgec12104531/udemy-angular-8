@@ -35,12 +35,19 @@
           <select 
             id="secret" 
             class="form-control"
-            ngModel
+            [ngModel]="defaultQuestion"
             name="secret"
             require>
             <option value="pet">Your first Pet?</option>
             <option value="teacher">Your first teacher?</option>
           </select>
+        </div>
+        <div class="form-group">
+          <textarea name="questionAnswerr" 
+                    rows="3"
+                    class="form-control"
+                    [(ngModel)]="answer"></textarea>
+          <div>Your reply: {{ answer }}</div>
         </div>
         <button class="btn btn-primary" 
                 type="submit"

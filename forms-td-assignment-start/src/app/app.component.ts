@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  subscription = ['Basic', 'Advanced', 'Pro'];
-  selectedSubscription: 'Advanced';
+  subscriptions = ['Basic', 'Advanced', 'Pro'];
+  selectedSubscription = 'Advanced';
 }

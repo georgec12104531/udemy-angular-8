@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     console.log('postData', postData);
     this.http
       .post(
-        'https://http-practice-01.firebaseio.com/',
+        'https://http-practice-01.firebaseio.com/post.json',
         postData
       )
       .subscribe(responseData => {

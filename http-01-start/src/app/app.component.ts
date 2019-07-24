@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
+import { Post } from './post.model'
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { map } from 'rxjs/operators'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loadedPosts = [];
+  loadedPosts: Post[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -18,9 +19,8 @@ export class AppComponent implements OnInit {
 
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
-    console.log('postData', postData);
     this.http
-      .post(
+      .post<{ name: string }>(
         'https://http-practice-01.firebaseio.com/post.json',
         postData
       )
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
 
   fetchPosts() {
     this.http
-      .get('https://http-practice-01.firebaseio.com/post.json')
+      .get<{[key: string]: Post}>('https://http-practice-01.firebaseio.com/post.json')
       .pipe(map((response) => {
         const postArr = [];
         for (const key in response) {
@@ -50,8 +50,8 @@ export class AppComponent implements OnInit {
         return postArr;
       })
     )
-      .subscribe((resp) => {
-        console.log(resp);
+      .subscribe((post) => {
+        this.loadedPosts = post;
     });
   }
 }

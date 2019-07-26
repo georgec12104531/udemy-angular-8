@@ -50,8 +50,8 @@ export class AppComponent implements OnInit {
         return postArr;
       })
     )
-      .subscribe((post) => {
-        this.loadedPosts = post;
+      .subscribe((posts) => {
+        this.loadedPosts = posts;
     });
   }
 }

@@ -1,3 +1,4 @@
+import { PostsService } from './posts.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
   loadedPosts: Post[] = [];
   isFetching = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private postsService: PostsService) {}
 
   ngOnInit() {
     this.fetchPosts();
@@ -20,14 +21,9 @@ export class AppComponent implements OnInit {
 
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
-    this.http
-      .post<{ name: string }>(
-        'https://http-practice-01.firebaseio.com/post.json',
-        postData
-      )
-    .subscribe(responseData => {
-      console.log(responseData);
-    })
+
+    this.postsService.createAndStorePosts(postData.title, postData.content);
+   
   }
 
   onFetchPosts() {

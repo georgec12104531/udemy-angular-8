@@ -1,7 +1,7 @@
 import { Post } from './post.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class PostsService {
@@ -17,8 +17,26 @@ export class PostsService {
       'https://http-practice-01.firebaseio.com/post.json',
       postData
     )
-  .subscribe(responseData => {
+    .subscribe(responseData => {
     console.log(responseData);
-  });
+    });
+  }
+
+  fetchPosts() {
+    this.http
+      .get<{[key: string]: Post}>('https://http-practice-01.firebaseio.com/post.json')
+      .pipe(map((response) => {
+        const postArr = [];
+        for (const key in response) {
+          if (response.hasOwnProperty(key)) {
+            postArr.push({...response[key], id: key})
+          }
+        }
+        return postArr;
+      })
+    )
+      .subscribe((posts) => {
+        console.log(posts);
+    });
   }
 }

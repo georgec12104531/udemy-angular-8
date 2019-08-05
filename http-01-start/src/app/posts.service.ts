@@ -23,20 +23,17 @@ export class PostsService {
   }
 
   fetchPosts() {
-    this.http
+    return this.http
       .get<{[key: string]: Post}>('https://http-practice-01.firebaseio.com/post.json')
       .pipe(map((response) => {
         const postArr = [];
         for (const key in response) {
           if (response.hasOwnProperty(key)) {
-            postArr.push({...response[key], id: key})
+            postArr.push({...response[key], id: key});
           }
         }
         return postArr;
       })
-    )
-      .subscribe((posts) => {
-        console.log(posts);
-    });
+    );
   }
 }

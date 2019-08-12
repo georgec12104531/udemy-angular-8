@@ -24,8 +24,10 @@ export class PostsService {
 
   fetchPosts() {
     return this.http
-      .get<{[key: string]: Post}>('https://http-practice-01.firebaseio.com/post.json')
-      .pipe(map((response) => {
+      .get<{[key: string]: Post}>(
+        'https://http-practice-01.firebaseio.com/post.json')
+      .pipe(
+        map((response) => {
         const postArr = [];
         for (const key in response) {
           if (response.hasOwnProperty(key)) {
@@ -35,5 +37,9 @@ export class PostsService {
         return postArr;
       })
     );
+  }
+
+  deletePosts() {
+    return this.http.delete('https://http-practice-01.firebaseio.com/post.json');
   }
 }
